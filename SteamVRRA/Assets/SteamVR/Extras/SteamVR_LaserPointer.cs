@@ -23,7 +23,11 @@ namespace Valve.VR.Extras
         public event PointerEventHandler PointerIn;
         public event PointerEventHandler PointerOut;
         public event PointerEventHandler PointerClick;
-
+        public event PointerEventHandler PointerHold;
+        public event PointerEventHandler PointerRelease;
+        private bool inside = false;
+        private bool wasHolding = false;
+        private RaycastHit lastHit;
         Transform previousContact = null;
 
 
@@ -88,6 +92,16 @@ namespace Valve.VR.Extras
                 PointerOut(this, e);
         }
 
+        public virtual void OnPointerHold(PointerEventArgs e)
+        {
+            if (PointerHold != null)
+                PointerHold(this, e);
+        }
+        public virtual void OnPointerRelease(PointerEventArgs e)
+        {
+            if (PointerRelease != null)
+                PointerRelease(this, e);
+        }
 
         private void Update()
         {
@@ -112,6 +126,7 @@ namespace Valve.VR.Extras
                 args.target = previousContact;
                 OnPointerOut(args);
                 previousContact = null;
+                inside = false;
             }
             if (bHit && previousContact != hit.transform)
             {
@@ -122,6 +137,7 @@ namespace Valve.VR.Extras
                 argsIn.target = hit.transform;
                 OnPointerIn(argsIn);
                 previousContact = hit.transform;
+                
             }
             if (!bHit)
             {
@@ -140,6 +156,34 @@ namespace Valve.VR.Extras
                 argsClick.flags = 0;
                 argsClick.target = hit.transform;
                 OnPointerClick(argsClick);
+            }
+
+            if(bHit && interactWithUI.GetStateDown(pose.inputSource))
+            {
+                inside = true;
+            }
+
+            if(bHit && interactWithUI.GetState(pose.inputSource) && inside)
+            {
+                PointerEventArgs argsHold = new PointerEventArgs();
+                argsHold.fromInputSource = pose.inputSource;
+                argsHold.distance = hit.distance;
+                argsHold.flags = 0;
+                argsHold.target = hit.transform;
+                OnPointerHold(argsHold);
+                wasHolding = true;
+                inside = false;
+                lastHit = hit;
+            }
+            else if(!interactWithUI.GetState(pose.inputSource) && wasHolding)
+            {
+                wasHolding = false;
+                PointerEventArgs argsRelease = new PointerEventArgs();
+                argsRelease.fromInputSource = pose.inputSource;
+                argsRelease.distance = lastHit.distance;
+                argsRelease.flags = 0;
+                argsRelease.target = lastHit.transform;
+                OnPointerRelease(argsRelease);
             }
 
             if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))

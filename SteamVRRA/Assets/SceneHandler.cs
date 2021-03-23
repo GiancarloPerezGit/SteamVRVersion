@@ -57,8 +57,14 @@ public class SceneHandler : MonoBehaviour
         if (e.target.tag == "Click")
         {
             Debug.Log(e.target.name + " click name");
-            bms.OnClick(e.target.gameObject.GetComponent<Button>());
+            ExecuteEvents.Execute(e.target.gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+            //bms.OnClick(e.target.gameObject.GetComponent<Button>());
         }
+        else if(e.target.tag == "Other")
+        {
+            
+        }
+            
     }
 
     public void PointerInside(object sender, PointerEventArgs e)

@@ -30,6 +30,8 @@ TagManager:
   - Floor
   - Click
   - Hold
+  - Speed
+  - PlayClick
   layers:
   - Default
   - TransparentFX

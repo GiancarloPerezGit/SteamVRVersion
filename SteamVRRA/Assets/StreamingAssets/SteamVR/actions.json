@@ -50,6 +50,22 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/pStop",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/Dashboard",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/Trackpad Position",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/default/in/Trackpad_click",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
@@ -98,6 +114,10 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/RASet",
       "usage": "single"
     }
   ],

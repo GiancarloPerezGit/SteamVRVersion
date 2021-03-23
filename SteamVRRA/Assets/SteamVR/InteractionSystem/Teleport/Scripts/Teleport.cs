@@ -123,6 +123,10 @@ namespace Valve.VR.InteractionSystem
 		public static SteamVR_Events.Event< TeleportMarkerBase > PlayerPre = new SteamVR_Events.Event< TeleportMarkerBase >();
 		public static SteamVR_Events.Action< TeleportMarkerBase > PlayerPreAction( UnityAction< TeleportMarkerBase > action ) { return new SteamVR_Events.Action< TeleportMarkerBase >( PlayerPre, action ); }
 
+		public bool down = false;
+		public bool pressed = false;
+		public bool released = false;
+
 		//-------------------------------------------------
 		private static Teleport _instance;
 		public static Teleport instance
@@ -1098,7 +1102,8 @@ namespace Valve.VR.InteractionSystem
 				}
 				else
                 {
-                    return teleportAction.GetStateUp(hand.handType);
+					return released;
+                    //return teleportAction.GetStateUp(hand.handType);
 
                     //return hand.controller.GetPressUp( SteamVR_Controller.ButtonMask.Touchpad );
                 }
@@ -1118,7 +1123,8 @@ namespace Valve.VR.InteractionSystem
 				}
 				else
                 {
-                    return teleportAction.GetState(hand.handType);
+					return down;
+                    //return teleportAction.GetState(hand.handType);
 				}
 			}
 
@@ -1137,7 +1143,8 @@ namespace Valve.VR.InteractionSystem
 				}
 				else
                 {
-                    return teleportAction.GetStateDown(hand.handType);
+					return pressed;
+                    //return teleportAction.GetStateDown(hand.handType);
 
                     //return hand.controller.GetPressDown( SteamVR_Controller.ButtonMask.Touchpad );
 				}

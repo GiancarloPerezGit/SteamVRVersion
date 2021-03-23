@@ -3,7 +3,33 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - projectile
+  - FxTemporaire
+  - Teleport Circle
+  - State
+  - UI
+  - LessonAxis
+  - SM
+  - LessonRobot
+  - TeleGrid
+  - PNPUI
+  - PNPAnim
+  - Flange
+  - UIManager
+  - RobotManager
+  - AxSpeed
+  - AxisRobot
+  - BMS
+  - Dropdown
+  - LightWall
+  - Highlight
+  - Wall
+  - MovementType
+  - Arrow
+  - Floor
+  - Click
+  - Hold
   layers:
   - Default
   - TransparentFX

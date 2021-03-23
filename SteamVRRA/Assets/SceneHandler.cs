@@ -12,6 +12,7 @@ public class SceneHandler : MonoBehaviour
     private bool startHold = false;
     private Color normCol;
     private Color pressCol;
+    public ButtonManagerScript bms;
 
     void Awake()
     {
@@ -24,13 +25,14 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerReleased(object sender, PointerEventArgs e)
     {
-        if (e.target.name == "Button")
+        if (e.target.tag == "Hold")
         {
             Debug.Log("Button was released");
             ColorBlock custom = e.target.gameObject.GetComponent<Button>().colors;
             custom.normalColor = normCol;
             custom.pressedColor = pressCol;
             e.target.gameObject.GetComponent<Button>().colors = custom;
+            bms.OnRelease();
         }
 
     }
@@ -46,6 +48,7 @@ public class SceneHandler : MonoBehaviour
             custom.normalColor = pressCol;
             custom.pressedColor = normCol;
             e.target.gameObject.GetComponent<Button>().colors = custom;
+            bms.OnPress(e.target.gameObject.GetComponent<Button>());
         }
     }
 
@@ -53,8 +56,8 @@ public class SceneHandler : MonoBehaviour
     {
         if (e.target.tag == "Click")
         {
-            Debug.Log("Button was clicked");
-            ExecuteEvents.Execute(e.target.gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+            Debug.Log(e.target.name + " click name");
+            bms.OnClick(e.target.gameObject.GetComponent<Button>());
         }
     }
 
@@ -68,7 +71,7 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerOutside(object sender, PointerEventArgs e)
     {
-        (e.target.tag == "Click" || e.target.tag == "Hold")
+        if (e.target.tag == "Click" || e.target.tag == "Hold")
         {
             Debug.Log("Button was exited");
         }

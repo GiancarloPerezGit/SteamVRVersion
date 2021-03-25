@@ -245,7 +245,7 @@ public class ButtonManagerScript : MonoBehaviour
             BtnWorldOn = false;
             BtnToolOn = false;
             Debug.Log("Robot Axis Mode: on");
-            robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
+            //robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
             robMan.GetComponent<ProjectRoboDK.KR10IKW>().enabled = false;
             robMan.GetComponent<AxisMode>().enabled = true;
             modePopUp.transform.GetChild(0).gameObject.SetActive(false);
@@ -257,7 +257,7 @@ public class ButtonManagerScript : MonoBehaviour
             BtnWorldOn = true;
             BtnToolOn = false;
             Debug.Log("World Axis Mode: on");
-            robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
+            //robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
             robMan.GetComponent<ProjectRoboDK.KR10IKW>().enabled = true;
             robMan.GetComponent<AxisMode>().enabled = false;
             modePopUp.transform.GetChild(0).gameObject.SetActive(true);
@@ -289,7 +289,7 @@ public class ButtonManagerScript : MonoBehaviour
                 BtnWorldOn = false;
                 BtnToolOn = false;
                 Debug.Log("Robot Axis Mode: on");
-                robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
+                //robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
                 robMan.GetComponent<ProjectRoboDK.KR10IKW>().enabled = false;
                 robMan.GetComponent<AxisMode>().enabled = true;
                 modePopUp.transform.GetChild(0).gameObject.SetActive(false);
@@ -301,7 +301,7 @@ public class ButtonManagerScript : MonoBehaviour
                 BtnWorldOn = true;
                 BtnToolOn = false;
                 Debug.Log("World Axis Mode: on");
-                robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
+                //robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = false;
                 robMan.GetComponent<ProjectRoboDK.KR10IKW>().enabled = true;
                 robMan.GetComponent<AxisMode>().enabled = false;
                 modePopUp.transform.GetChild(0).gameObject.SetActive(true);
@@ -312,7 +312,7 @@ public class ButtonManagerScript : MonoBehaviour
                 BtnRobotOn = false;
                 BtnWorldOn = false;
                 BtnToolOn = true;
-                robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = true;
+                //robMan.GetComponent<ProjectRoboDK.ToolMode>().enabled = true;
                 robMan.GetComponent<ProjectRoboDK.KR10IKW>().enabled = false;
                 robMan.GetComponent<AxisMode>().enabled = false;
                 Debug.Log("Tool Axis Mode: on");

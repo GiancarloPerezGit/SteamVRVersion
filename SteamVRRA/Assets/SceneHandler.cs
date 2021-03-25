@@ -54,7 +54,7 @@ public class SceneHandler : MonoBehaviour
 
     public void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.tag == "Click")
+        if (e.target.tag == "Click" || e.target.tag == "MovementType")
         {
             Debug.Log(e.target.name + " click name");
             ExecuteEvents.Execute(e.target.gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);

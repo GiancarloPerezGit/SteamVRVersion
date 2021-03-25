@@ -11,6 +11,7 @@ namespace Valve.VR.InteractionSystem
 
         public SnapTurn st;
         public Teleport tp;
+        public bool turned = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -26,10 +27,12 @@ namespace Valve.VR.InteractionSystem
                 if(trackPos.axis.x<-0.5 && trackPos.axis.y < 0.5 && trackPos.axis.y > -0.5)
                 {
                     st.RotatePlayer(-st.snapAngle);
+                    turned = true;
                 }
                 else if(trackPos.axis.x > 0.5 && trackPos.axis.y < 0.5 && trackPos.axis.y > -0.5)
                 {
                     st.RotatePlayer(st.snapAngle);
+                    turned = true;
                 }
                 else if(trackPos.axis.x > -0.5 && trackPos.axis.x < 0.5 && trackPos.axis.y > 0.5)
                 {
@@ -39,6 +42,7 @@ namespace Valve.VR.InteractionSystem
             else
             {
                 tp.pressed = false;
+                turned = false;
             }
             if(trackClick.GetState(hand))
             {

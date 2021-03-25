@@ -4,36 +4,30 @@ using UnityEngine;
 //using Microsoft.MixedReality.Toolkit.Input;
 //using Microsoft.MixedReality.Toolkit.Physics;
 //using Microsoft.MixedReality.Toolkit.Utilities;
-public class teleportHere : MonoBehaviour
+namespace Valve.VR.InteractionSystem
 {
-    public Microsoft.MixedReality.Toolkit.Teleport.CustomTeleport ct;
-    // Start is called before the first frame update
-    void Start()
+    public class teleportHere : MonoBehaviour
     {
-        
-    }
+        public Player player;
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    public void teleport()
-    {
-        if(ct.rotateTimes == 1)
-        {
-            ct.player.transform.Rotate(new Vector3(0, -90, 0));
         }
-        else if(ct.rotateTimes == 2)
-        {
-            ct.player.transform.Rotate(new Vector3(0, -180, 0));
-        }
-        else if(ct.rotateTimes == 3)
-        {
-            ct.player.transform.Rotate(new Vector3(0, -270, 0));
-        }
-        ct.rotateTimes = 0;
-        ct.player.transform.position = new Vector3(gameObject.transform.position.x + -1 * ct.cam.transform.localPosition.x, gameObject.transform.position.y, gameObject.transform.position.z + 1 * ct.cam.transform.localPosition.z);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void teleport()
+        {
+            Vector3 playerFeetOffset = player.trackingOriginTransform.position - player.feetPositionGuess;
+            player.trackingOriginTransform.position = gameObject.transform.position + playerFeetOffset;
+            //player.transform.position = new Vector3(gameObject.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
+            //player.transform.rotation = gameObject.transform.rotation;
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

@@ -9,7 +9,8 @@ namespace Valve.VR.InteractionSystem
         public SteamVR_Action_Boolean dash = SteamVR_Input.GetBooleanAction("Dashboard");
         public SteamVR_Input_Sources hand;
         public DashboardController dc;
-        private bool open = false;
+        public bool open = false;
+        public bool pressed = false;
         // Start is called before the first frame update
         void Start()
         {
@@ -30,6 +31,11 @@ namespace Valve.VR.InteractionSystem
                     dc.OpenDashboard();
                 }
                 open = !open;
+                pressed = true;
+            }
+            else
+            {
+                pressed = false;
             }
         }
     }

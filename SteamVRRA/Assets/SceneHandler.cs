@@ -13,6 +13,7 @@ public class SceneHandler : MonoBehaviour
     private Color normCol;
     private Color pressCol;
     public ButtonManagerScript bms;
+    public ProjectRoboDK.CodeWindow cw;
 
     void Awake()
     {
@@ -34,6 +35,16 @@ public class SceneHandler : MonoBehaviour
             e.target.gameObject.GetComponent<Button>().colors = custom;
             bms.OnRelease();
         }
+        if (e.target.tag == "PlayClick" || e.target.tag == "BackClick")
+        {
+            Debug.Log("Button was released");
+            ColorBlock custom = e.target.gameObject.GetComponent<Button>().colors;
+            custom.normalColor = normCol;
+            custom.pressedColor = pressCol;
+            e.target.gameObject.GetComponent<Button>().colors = custom;
+            cw.unHold();
+        }
+
 
     }
 
@@ -49,6 +60,28 @@ public class SceneHandler : MonoBehaviour
             custom.pressedColor = normCol;
             e.target.gameObject.GetComponent<Button>().colors = custom;
             bms.OnPress(e.target.gameObject.GetComponent<Button>());
+        }
+        if (e.target.tag == "PlayClick")
+        {
+            Debug.Log("Button was held");
+            normCol = e.target.gameObject.GetComponent<Button>().colors.normalColor;
+            pressCol = e.target.gameObject.GetComponent<Button>().colors.pressedColor;
+            ColorBlock custom = e.target.gameObject.GetComponent<Button>().colors;
+            custom.normalColor = pressCol;
+            custom.pressedColor = normCol;
+            e.target.gameObject.GetComponent<Button>().colors = custom;
+            cw.hold();
+        }
+        if (e.target.tag == "BackClick")
+        {
+            Debug.Log("Button was held");
+            normCol = e.target.gameObject.GetComponent<Button>().colors.normalColor;
+            pressCol = e.target.gameObject.GetComponent<Button>().colors.pressedColor;
+            ColorBlock custom = e.target.gameObject.GetComponent<Button>().colors;
+            custom.normalColor = pressCol;
+            custom.pressedColor = normCol;
+            e.target.gameObject.GetComponent<Button>().colors = custom;
+            cw.holdNeg();
         }
     }
 

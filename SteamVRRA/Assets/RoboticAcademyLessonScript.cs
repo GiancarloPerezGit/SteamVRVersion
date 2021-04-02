@@ -215,7 +215,7 @@ namespace Valve.VR.InteractionSystem
             pnpKR420Light = pnpLights.transform.GetChild(14).GetComponent<Light>();
             pnpKR30Light = pnpLights.transform.GetChild(15).GetComponent<Light>();
 
-            StartCoroutine("Lesson0_3b");
+            StartCoroutine("Lesson0_7");
             //startLesson1();
 
         }
@@ -499,6 +499,11 @@ namespace Valve.VR.InteractionSystem
                     pnpAnimatorControllerSpeed(0);
                     yield return new WaitForSeconds(1.5f);
                     lessonAudio.transform.GetChild(0).GetChild(13).gameObject.SetActive(false);
+
+                    lessonAudio.transform.GetChild(2).GetChild(0).gameObject.SetActive(true);
+                    yield return new WaitForSeconds(lessonAudio.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>().clip.length);
+                    lessonAudio.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
+
                     clickGraphicPNP.gameObject.SetActive(true);
 
                     while (targetPressed != true)
@@ -510,11 +515,16 @@ namespace Valve.VR.InteractionSystem
 
                     clickGraphicPNP.gameObject.SetActive(false);
                     pnpAnimatorControllerSpeed(1);
+
                     lessonAudio.transform.GetChild(0).GetChild(14).gameObject.SetActive(true);
                     yield return new WaitForSeconds(lessonAudio.transform.GetChild(0).GetChild(14).GetComponent<AudioSource>().clip.length);
                     lessonAudio.transform.GetChild(0).GetChild(14).gameObject.SetActive(false);
 
                     pnpLightIntensity("KR240", 0);
+
+                    lessonAudio.transform.GetChild(2).GetChild(1).gameObject.SetActive(true);
+                    yield return new WaitForSeconds(lessonAudio.transform.GetChild(2).GetChild(1).GetComponent<AudioSource>().clip.length);
+                    lessonAudio.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
                 }
                 yield return null;
             }

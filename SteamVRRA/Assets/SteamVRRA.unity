@@ -3142,13 +3142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23df02fc8ca95e4bae1092479e0de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerTarget: {fileID: 1834362728}
-  node: {fileID: 2031678658}
-  currentList: 
-  uiNodeList: {fileID: 0}
-  nodeList: []
-  currentloc: {fileID: 0}
-  nodePlaceMode: 0
 --- !u!1 &162779728
 GameObject:
   m_ObjectHideFlags: 0
@@ -5570,6 +5563,9 @@ MonoBehaviour:
   isTriggerheld: 0
   robotOverlap: 0
   timeRemaining: 5
+  trp: {fileID: 0}
+  dsvr: {fileID: 0}
+  skui: {fileID: 0}
 --- !u!114 &266825756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6965,7 +6961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &327766578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7590,6 +7586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserPointer: {fileID: 1795145877}
   bms: {fileID: 1629540338}
+  cw: {fileID: 0}
 --- !u!114 &374853552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7611,6 +7608,7 @@ MonoBehaviour:
   hand: 0
   st: {fileID: 566937925}
   tp: {fileID: 453976961}
+  turned: 0
 --- !u!114 &374853553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7645,6 +7643,8 @@ MonoBehaviour:
     needsReinit: 0
   hand: 0
   dc: {fileID: 1834362730}
+  open: 0
+  pressed: 0
 --- !u!1 &376879253
 GameObject:
   m_ObjectHideFlags: 0
@@ -46139,11 +46139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1834362728 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6458694317074344329, guid: 77ffb9de48fe5c944a514f0f2b8783be, type: 3}
-  m_PrefabInstance: {fileID: 1834362725}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1834362729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3595160368801145853, guid: 77ffb9de48fe5c944a514f0f2b8783be, type: 3}
@@ -56574,7 +56569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288251670229602941}
   m_LocalRotation: {x: -0, y: 0.9848078, z: -0, w: 0.17364825}
-  m_LocalPosition: {x: -8.385742, y: -0.5672078, z: 29.983948}
+  m_LocalPosition: {x: -28.9, y: -0.5672078, z: -0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1288251670444102804}

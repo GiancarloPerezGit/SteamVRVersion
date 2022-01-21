@@ -215,7 +215,7 @@ namespace Valve.VR.InteractionSystem
             pnpKR420Light = pnpLights.transform.GetChild(14).GetComponent<Light>();
             pnpKR30Light = pnpLights.transform.GetChild(15).GetComponent<Light>();
 
-            StartCoroutine("Lesson0_7");
+            StartCoroutine("Lesson0_1");
             //startLesson1();
 
         }
@@ -261,10 +261,11 @@ namespace Valve.VR.InteractionSystem
         //--LESSON 0--VR TUTORIAL//
         IEnumerator Lesson0_1()
         {
+            yield return new WaitForSeconds(2);
             controlPannel.SetActive(false);
             logoObject.SetActive(true);
 
-            yield return new WaitForSeconds(2);
+            
             pnpAnimatorControllerSpeed(0);
 
             //animation for the RA loop plays
